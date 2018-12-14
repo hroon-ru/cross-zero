@@ -15,7 +15,15 @@ class DefaultView
     public function updateView () {
 
         foreach ($this->model_data as $template) {
-            if (is_file(__DIR__ . '/../Html/' . $template))
+
+            if (is_array($template)) {
+
+                foreach ($template as $templ) {
+                    if (is_file(__DIR__ . '/../Page/' . $templ))
+                        $this->page .= file_get_contents(__DIR__ . '/../Page/' . $templ);
+                }
+
+            } else if (is_file(__DIR__ . '/../Html/' . $template))
                 $this->page .= file_get_contents(__DIR__ . '/../Html/' . $template);
         }
 
