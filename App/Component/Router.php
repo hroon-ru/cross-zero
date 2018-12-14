@@ -22,7 +22,7 @@ class Router
 
 
     public function getController () {
-        return new $this->controller();
+        return new $this->controller($this->params);
     }
 
 

@@ -1,6 +1,12 @@
 <?php
 
-echo "Welcome page";
+class Welcome extends DefaultController
+{
+    /*public function execute () {
+        echo 'Welcome !!!';
+    }*/
+}
+
 
 ?>
 

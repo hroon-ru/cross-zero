@@ -2,7 +2,7 @@
 
 function __autoload ($class)
 {
-    $auto_folders = [ '/Component/', '/Controller/' ];
+    $auto_folders = [ '/Component/', '/Controller/', '/Model/', '/View/' ];
 
     foreach ($auto_folders as $auto_folder) {
 
