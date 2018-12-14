@@ -9,8 +9,8 @@ class Welcome extends DefaultController
 
     public function __construct ($params) {
 
-        $this->setParams($params);
-        $this->setBody('welcome.html');
+        //$this->setParams($params);
+        //$this->setBody('welcome.html');
     }
 }
 

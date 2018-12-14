@@ -13,16 +13,21 @@ class Router
         $this->route = trim($url, '/');
         $this->params = explode( '/', $this->route);
         $this->controller = ucwords($this->params[1]);
-
-        if (!is_file(__DIR__ . '/../Controller/' . $this->controller . '.php')) {
-            $this->controller = 'DefaultController';
-            $this->params = NULL;
-        }
     }
 
 
     public function getController () {
-        return new $this->controller($this->params);
+
+        if (!is_file(__DIR__ . '/../Controller/' . $this->controller . '.php')) {
+
+            $controller = new DefaultController(NULL);
+            $controller->setBody($this->controller . '.html');
+            $this->controller = 'DefaultController';
+            $this->params = NULL;
+
+        } else $controller = new $this->controller($this->params);
+
+        return $controller;
     }
 
 
