@@ -27,6 +27,9 @@ class DefaultView
                 $this->page .= file_get_contents(__DIR__ . '/../Html/' . $template);
         }
 
+        $default_model = new DefaultModel();
+        $this->page = $default_model->processTemplates($this->page);
+
     }
 
 
