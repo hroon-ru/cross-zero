@@ -2,17 +2,29 @@
 
 class Router
 {
+    private $url;
     private $route;
+    private $request_type;
+    private $get_params;
+    private $post_params;
+    private $https;
     private $controller;
-    private $params;
 
 
-    public function __construct ($url) {
+    public function __construct () {
 
+        $this->url = filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_STRING);
         $this->controller = 'DefaultController';
-        $this->route = trim($url, '/');
+        $this->route = trim($this->url, '/');
         $this->params = explode( '/', $this->route);
         $this->controller = ucwords($this->params[1]);
+        require_once __DIR__ . '/routes.php';
+    }
+
+
+    public function changeRoute($pattern)
+    {
+
     }
 
 
